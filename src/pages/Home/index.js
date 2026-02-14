@@ -113,14 +113,14 @@ const Page = () => {
       </main>
       <footer className="row">
         <div className="col presta">
-          {last && (
+          {last ? (
             <EventCard
               imageSrc={last.cover}
               title={last.title}
               date={new Date(last.date)}
               label={last.type}
             />
-          )}
+          ) : null}
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
