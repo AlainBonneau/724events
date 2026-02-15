@@ -10,7 +10,7 @@ const Slider = () => {
 
   const byDateDesc = (data?.focus ?? [])
     .slice()
-    .sort((a, b) => (new Date(a.date) < new Date(b.date) ? -1 : 1));
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   useEffect(() => {
     if (!byDateDesc.length) return;
