@@ -31,8 +31,8 @@ const Form = ({ onSuccess, onError }) => {
     <form onSubmit={sendContact}>
       <div className="row">
         <div className="col">
-          <Field placeholder="" label="Nom" />
-          <Field placeholder="" label="Prénom" />
+          <Field placeholder="" label="Nom" dataTestId="contact-lastname" />
+          <Field placeholder="" label="Prénom" dataTestId="contact-firstname" />
           <Select
             selection={["Personel", "Entreprise"]}
             onChange={() => null}
@@ -40,10 +40,11 @@ const Form = ({ onSuccess, onError }) => {
             type="large"
             titleEmpty
           />
-          <Field placeholder="" label="Email" />
+          <Field placeholder="" label="Email" dataTestId="contact-email" />
           <Button
             type={BUTTON_TYPES.SUBMIT}
             htmlType="submit"
+            dataTestId="contact-submit"
             disabled={sending}
           >
             {sending ? "En cours" : "Envoyer"}
@@ -52,6 +53,7 @@ const Form = ({ onSuccess, onError }) => {
         <div className="col">
           <Field
             placeholder="message"
+            dataTestId="contact-message"
             label="Message"
             type={FIELD_TYPES.TEXTAREA}
           />

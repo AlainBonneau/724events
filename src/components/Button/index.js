@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 import "./style.scss";
 
 export const BUTTON_TYPES = {
@@ -7,7 +6,9 @@ export const BUTTON_TYPES = {
   SUBMIT: 2,
 };
 
-const Button = ({ title, onClick, type, disabled, children }) => {
+const Button = ({ title, onClick, type, disabled, children, dataTestId }) => {
+  const testId = dataTestId ?? "button-test-id";
+
   switch (type) {
     case BUTTON_TYPES.DEFAULT:
       return (
@@ -15,32 +16,34 @@ const Button = ({ title, onClick, type, disabled, children }) => {
           type="button"
           disabled={disabled}
           className="Button"
-          data-testid="button-test-id"
+          data-testid={testId}
           onClick={onClick}
           title={title}
         >
           {children}
         </button>
       );
+
     case BUTTON_TYPES.SUBMIT:
       return (
         <input
           disabled={disabled}
           className="Button"
           type="submit"
-          data-testid="button-test-id"
+          data-testid={testId}
           value={children}
           onClick={onClick}
           title={title}
         />
       );
+
     default:
       return (
         <button
           type="button"
           disabled={disabled}
           className="Button"
-          data-testid="button-test-id"
+          data-testid={testId}
           onClick={onClick}
           title={title}
         >
@@ -50,20 +53,22 @@ const Button = ({ title, onClick, type, disabled, children }) => {
   }
 };
 
-// eslint-disable-next-line react/no-typos
 Button.propTypes = {
   title: PropTypes.string,
   onClick: PropTypes.func,
   type: PropTypes.number,
   disabled: PropTypes.bool,
   children: PropTypes.node,
+  dataTestId: PropTypes.string,
 };
+
 Button.defaultProps = {
   disabled: false,
   onClick: () => null,
   type: BUTTON_TYPES.DEFAULT,
   title: "",
-  children: null
-}
+  children: null,
+  dataTestId: undefined,
+};
 
 export default Button;
