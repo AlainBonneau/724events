@@ -21,7 +21,9 @@
     "lints": "eslint .elintrc.js ./src",
     "format": "prettier ./src --write",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "test:ci": "CI=true react-scripts test --watchAll=false",
+    "build:vercel": "npm run test:ci && react-scripts build"
   },
   "eslintConfig": {
     "extends": [
