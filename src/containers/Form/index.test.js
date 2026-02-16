@@ -15,7 +15,7 @@ describe("When Events is created", () => {
       const onSuccess = jest.fn();
       render(<Form onSuccess={onSuccess} />);
       fireEvent(
-        await screen.findByTestId("button-test-id"),
+        await screen.findByTestId("contact-submit"),
         new MouseEvent("click", {
           cancelable: true,
           bubbles: true,
